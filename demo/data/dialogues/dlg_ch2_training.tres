@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_training"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "「来，今天教你读图纸。\n这些符号代表什么，记住没？」\n\n（你学了 3 个小时，脑子有点胀，但似乎学到了东西）",
+"effects": [
+{"type": "modify_stat", "stat": "intelligence", "delta": 2},
+{"type": "modify_stat", "stat": "stamina", "delta": -5},
+{"type": "set_flag", "flag_id": "training_progress", "value": true}
+]
+}]
+auto_close_on_end = true

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_decision_point"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第 88 天。\n你站在锦城的十字路口。\n这 88 天，你经历了太多。\n\n今天晚上，你做了一个决定。",
+"next_node": "end",
+"effects": [
+{"type": "set_flag", "flag_id": "chapter_3_done", "value": true}
+]
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第三章 完。\n\n终章：命运\n\n第 90 天，你的命运将被决定。",
+"choices": [
+{"text": "继续", "next_node": "next"}
+]
+}, {
+"node_id": "next",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "（继续…）"
+}]
+auto_close_on_end = true

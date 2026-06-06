@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_first_day"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第 1 天。\n你早上 7 点醒来，肚子咕咕叫。\n先去王阿姨那里吃个早饭吧。",
+"next_node": "go",
+"effects": [
+{"type": "set_flag", "flag_id": "day_1_breakfast", "value": true}
+]
+}, {
+"node_id": "go",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "王阿姨：「哎，又是新面孔啊？来碗豆浆？才 2 块。」\n（吃了第一顿早餐，饱腹 -20，但心情好了一点）",
+"effects": [
+{"type": "modify_money", "delta": -2},
+{"type": "modify_stat", "stat": "hunger", "delta": 20}
+]
+}]
+auto_close_on_end = true

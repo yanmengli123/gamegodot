@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_scam"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第 28 天傍晚。\n你走在回出租屋的路上，\n被一个穿西装的人拦住：\n\n「小伙子，我们公司急招人，\n交 500 块押金，\n明天就能上岗，月薪 8000！」",
+"choices": [
+{"text": "交钱", "next_node": "scam_lost", "effect": "cash -= 500"},
+{"text": "我不信", "next_node": "refuse"},
+{"text": "报警", "next_node": "police"}
+]
+}, {
+"node_id": "scam_lost",
+"speaker": "narrator",
+"portrait": "sad",
+"text": "第二天，那个『公司』人去楼空。\n你被骗了 500 块。",
+"effects": [
+{"type": "set_flag", "flag_id": "scammed", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": -20}
+]
+}, {
+"node_id": "refuse",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你推开他走开了。\n「哼，」他嘀咕，「不识抬举。」\n后来听说有人被骗了几千块。",
+"effects": [
+{"type": "set_flag", "flag_id": "scam_avoided", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": -5}
+]
+}, {
+"node_id": "police",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "警察赶来抓住了那个人。\n「谢谢你，小伙子。」\n\n你学到：骗子无处不在。",
+"effects": [
+{"type": "set_flag", "flag_id": "scam_avoided", "value": true},
+{"type": "set_flag", "flag_id": "police_help", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 10},
+{"type": "modify_morality": 10, "stat": "reputation", "delta": 5}
+]
+}]
+auto_close_on_end = true

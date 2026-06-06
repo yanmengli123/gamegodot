@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_study_route"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你报名了锦城业余大学，\n计算机专业，学费 ¥20000。\n两年制，\n每周三晚上 + 周末白天上课。",
+"choices": [
+{"text": "交学费", "next_node": "ok", "effect": "cash -= 20000"},
+{"text": "算了", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你成为了一名大学生。\n从今以后，\n你的人生有了另一种可能。",
+"effects": [
+{"type": "set_flag", "flag_id": "enrolled_university", "value": true},
+{"type": "modify_stat", "stat": "intelligence", "delta": 5},
+{"type": "modify_stat", "stat": "mood", "delta": 15}
+]
+}, {
+"node_id": "no",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你摇头。\n也许将来会后悔。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

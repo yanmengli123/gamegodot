@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_gray_route"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你接触了一个黑市商人。\n他提供的工作：\n- 帮人讨债（每天 ¥500）\n- 走私小货（每单 ¥2000）\n- 跑腿灰色服务",
+"choices": [
+{"text": "干！", "next_node": "go", "effect": "cash += 500"},
+{"text": "太危险了", "next_node": "no"}
+]
+}, {
+"node_id": "go",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你开始了灰色生活。\n钱来得快，\n但警察越来越关注你……",
+"effects": [
+{"type": "set_flag", "flag_id": "gray_route_started", "value": true},
+{"type": "modify_stat", "stat": "criminal_record", "delta": 10}
+]
+}, {
+"node_id": "no",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你走开了。\n这是你做过最聪明的决定之一。",
+"effects": [
+{"type": "set_flag", "flag_id": "gray_route_refused", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

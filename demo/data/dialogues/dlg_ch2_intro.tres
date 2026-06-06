@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_intro"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第二章：立足\n第 8-30 天。\n\n你的目标：\n• 找一份稳定的工作\n• 租一个像样的房子\n• 结识几个朋友",
+"next_node": "go",
+"effects": [
+{"type": "set_flag", "flag_id": "chapter_2_started", "value": true}
+]
+}, {
+"node_id": "go",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "小美：「嘿，你还没睡吗？明天我能见你吗？」\n李哥：「想不想学开塔吊？工资翻倍。」\n王阿姨：「我侄子那边需要人，去看看？」",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你看着这城市上空的星星，\n想起远方的家人。\n「第 8 天了。慢慢来吧。」"
+}]
+auto_close_on_end = true

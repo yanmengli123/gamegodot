@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_classmate"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_classmate",
+"portrait": "happy",
+"text": "{player_name}？是你吗？！\n我以为再也见不到你了！\n\n（你的老同学在城里开了一家小公司，\n他想请你过去帮忙）",
+"choices": [
+{"text": "好啊！", "next_node": "join", "effect": "cash += 100"},
+{"text": "我现在挺好的", "next_node": "no"}
+]
+}, {
+"node_id": "join",
+"speaker": "npc_classmate",
+"portrait": "happy",
+"text": "太好了！月薪 6000，做销售。\n这是定金。",
+"effects": [
+{"type": "modify_money", "delta": 100},
+{"type": "set_flag", "flag_id": "has_job_offer", "value": true}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_classmate",
+"portrait": "normal",
+"text": "好吧，\n我们保持联系。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": 5}
+]
+}]
+auto_close_on_end = true

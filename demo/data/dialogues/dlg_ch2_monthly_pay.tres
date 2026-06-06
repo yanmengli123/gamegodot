@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_monthly_pay"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "「月底了，这是你这个月的工资：¥4000。\n小伙子，恭喜你拿到了第一份月薪！」\n\n（你捏着 4000 块钱，手心有些汗）",
+"effects": [
+{"type": "modify_money", "delta": 4000},
+{"type": "set_flag", "flag_id": "first_monthly_pay", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 25}
+]
+}, {
+"node_id": "tip",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "提示：可以去银行存起来一部分，剩下租个像样的房子。\n或者去小美那里看看。",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "（继续你的锦城故事…）"
+}]
+auto_close_on_end = true

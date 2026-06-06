@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_intro"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第三章：抉择\n\n第 31-90 天。\n\n你已经不再是那个初来乍到的少年。\n你可以选择：",
+"next_node": "routes"
+}, {
+"node_id": "routes",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "【正道线】继续努力工作，争取晋升，最终开自己的店。\n【灰线】接触灰色生意，赚快钱但有风险。\n【学路线】攒钱上学，用知识改变命运。\n\n每条路都有不同的结局。",
+"choices": [
+{"text": "走正道", "next_node": "pro"},
+{"text": "走灰线", "next_node": "gray"},
+{"text": "走学路线", "next_node": "study"}
+]
+}, {
+"node_id": "pro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你决定走正道。\n路很长，但稳。",
+"effects": [
+{"type": "set_flag", "flag_id": "route_pro", "value": true}
+]
+}, {
+"node_id": "gray",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你决定冒险。\n希望你不会后悔。",
+"effects": [
+{"type": "set_flag", "flag_id": "route_gray", "value": true}
+]
+}, {
+"node_id": "study",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你决定重新学习。\n知识改变命运。",
+"effects": [
+{"type": "set_flag", "flag_id": "route_study", "value": true}
+]
+}]
+auto_close_on_end = true

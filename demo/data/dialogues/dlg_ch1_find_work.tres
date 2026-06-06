@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_find_work"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "「你是来干活的？去人才市场问我。\n现在工地缺人，你能搬得动砖不？」",
+"choices": [
+{"text": "能！", "next_node": "ok", "effect": "stamina -= 5"},
+{"text": "我考虑一下", "next_node": "think"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "行，明天早上 7 点来报到，记得带身份证。",
+"effects": [
+{"type": "set_flag", "flag_id": "has_job", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 10}
+]
+}, {
+"node_id": "think",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "行吧，想清楚再说。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

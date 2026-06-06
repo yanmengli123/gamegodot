@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_intro"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第一章：生存\n你身上还剩 ¥450。\n第一件事：找到工作。\n第二件事：填饱肚子。\n第三件事：别露宿街头。",
+"next_node": "tip",
+"effects": [
+{"type": "set_flag", "flag_id": "chapter_1_started", "value": true}
+]
+}, {
+"node_id": "tip",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "提示：去老街的菜市场、人才市场、或者王阿姨的早餐摊问问。\n找到工作后每天会自动结算工资。",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "happy",
+"text": "「加油，{player_name}。你一定能撑过去。」"
+}]
+auto_close_on_end = true

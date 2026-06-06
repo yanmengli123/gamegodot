@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_meet_mentor"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "「小子，这两周你表现得不错。\n我有心收你当徒弟，\n教你点真本事。愿意不？」",
+"choices": [
+{"text": "愿意！", "next_node": "ok", "effect": "stamina -= 10"},
+{"text": "再说吧", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "好。明天开始，每天下班后我教你两个小时。\n满师之后，你就是工地上的『师傅』了。",
+"effects": [
+{"type": "set_flag", "flag_id": "has_mentor", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 15},
+{"type": "modify_stat", "stat": "strength", "delta": 2}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "行。想学的时候跟我说。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

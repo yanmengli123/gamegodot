@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ending_intro"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "终章：命运\n\n第 90 天，傍晚。\n\n你站在锦城的高架桥上，\n看着远处的万家灯火。\n\n90 天前，你拎着一个行李箱，\n身上只有 500 块。\n\n现在呢？",
+"next_node": "check",
+"effects": [
+{"type": "set_flag", "flag_id": "ending_phase", "value": true}
+]
+}, {
+"node_id": "check",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "命运即将揭晓。\n\n（游戏系统将根据你的所有选择，\n决定你的结局。）",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "（按 E 键查看你的结局）"
+}]
+auto_close_on_end = true

@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_prologue_arrive"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "锦城，2025 年 3 月。\n你拎着一个破旧的行李箱走出火车站。\n身上只有 500 块，手机里存着 3 个电话。\n城里的霓虹灯闪着冷漠的光。",
+"next_node": "arr",
+"effects": [
+{"type": "set_flag", "flag_id": "prologue_started", "value": true}
+]
+}, {
+"node_id": "arr",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "出站口，一个穿灰色外套的中年男人朝你招手：\n「小伙子，刚来锦城？找工作不？我叫老张。」",
+"next_node": "meet_zhang",
+"effects": [
+{"type": "set_flag", "flag_id": "met_laozhang", "value": true}
+]
+}, {
+"node_id": "meet_zhang",
+"speaker": "npc_laozhang",
+"portrait": "happy",
+"text": "我也是外地来的，已经 5 年了。\n锦城机会多，但坑也多。\n你今晚住哪儿？要不我带你去个便宜旅馆？",
+"choices": [
+{"text": "好啊，谢谢老张", "next_node": "go_hotel", "effect": "cash -= 50"},
+{"text": "我先自己找找", "next_node": "go_alone"}
+]
+}, {
+"node_id": "go_hotel",
+"speaker": "npc_laozhang",
+"portrait": "happy",
+"text": "走，我带你去。\n（老张带你去了一家小旅馆，¥50 一晚。）\n「睡一觉，明天开始找活儿干。锦城不相信眼泪，但也不亏待肯吃苦的人。」",
+"effects": [
+{"type": "modify_money", "delta": -50},
+{"type": "modify_stat", "stat": "mood", "delta": 10},
+{"type": "set_flag", "flag_id": "intro_wang_ayi", "value": true},
+{"type": "set_flag", "flag_id": "prologue_done", "value": true}
+]
+}, {
+"node_id": "go_alone",
+"speaker": "npc_laozhang",
+"portrait": "normal",
+"text": "行，你自己小心。\n有事打电话给我。",
+"effects": [
+{"type": "set_flag", "flag_id": "intro_wang_ayi", "value": true},
+{"type": "set_flag", "flag_id": "prologue_done", "value": true}
+]
+}]
+auto_close_on_end = true

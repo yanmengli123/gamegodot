@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_pro_route"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "「你小子这两年干得不错。\n商业中心那栋写字楼完工，\n我推荐你当班长。\n月薪 1.2 万。」",
+"effects": [
+{"type": "set_flag", "flag_id": "promoted_to_lead", "value": true},
+{"type": "modify_money", "delta": 12000},
+{"type": "modify_stat", "stat": "mood", "delta": 20}
+]
+}]
+auto_close_on_end = true

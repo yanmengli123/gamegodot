@@ -33,6 +33,9 @@ WeatherManager="*res://core/autoload/weather_manager.gd"
 Events="*res://core/autoload/event_manager.gd"
 Notifications="*res://core/autoload/notification_manager.gd"
 Audio="*res://core/autoload/audio_manager.gd"
+TileMapInit="*res://core/autoload/tilemap_autoload.gd"
+Story="*res://core/autoload/main_story.gd"
+Endings="*res://core/autoload/ending_system.gd"
 
 [display]
 
