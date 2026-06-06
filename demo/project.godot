@@ -38,6 +38,8 @@ Story="*res://core/autoload/main_story.gd"
 Endings="*res://core/autoload/ending_system.gd"
 Locale="*res://core/autoload/locale_service.gd"
 Steam="*res://core/autoload/steam_service.gd"
+DLC="*res://core/autoload/dlc_service.gd"
+Network="*res://core/autoload/network_service.gd"
 
 [display]
 

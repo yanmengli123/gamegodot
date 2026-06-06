@@ -77,6 +77,10 @@ signal accommodation_changed(accommodation_id: String)
 signal notification_requested(category: int, text: String)  # NotificationManager.Category
 signal floating_number_requested(world_pos: Vector2, text: String, color: Color)
 
+# === DLC ===
+signal dlc_enabled(dlc_id: String)
+signal dlc_disabled(dlc_id: String)
+
 
 func _ready() -> void:
 	# autoload 在所有节点之前；这里只挂信号，不订阅

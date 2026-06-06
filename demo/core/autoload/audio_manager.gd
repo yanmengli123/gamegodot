@@ -29,16 +29,16 @@ func _ready() -> void:
 
 
 func _preload_audio() -> void:
-	# SFX
-	_sfx_cache["click"] = ProceduralAudio.make_stream(ProceduralAudio.click_sfx())
-	_sfx_cache["footstep"] = ProceduralAudio.make_stream(ProceduralAudio.footstep_sfx())
-	_sfx_cache["coin"] = ProceduralAudio.make_stream(ProceduralAudio.coin_sfx())
-	_sfx_cache["notify"] = ProceduralAudio.make_stream(ProceduralAudio.notify_sfx())
-	_sfx_cache["error"] = ProceduralAudio.make_stream(ProceduralAudio.error_sfx())
-	# BGM
-	_bgm_cache["jincheng"] = ProceduralAudio.make_stream(ProceduralAudio.bgm_jincheng())
-	_bgm_cache["indoor"] = ProceduralAudio.make_stream(ProceduralAudio.bgm_indoor())
-	_bgm_cache["work"] = ProceduralAudio.make_stream(ProceduralAudio.bgm_work())
+	# SFX — 优先用文件，回退程序化
+	_sfx_cache["click"] = BGMLibrary.get_sfx("click")
+	_sfx_cache["footstep"] = BGMLibrary.get_sfx("footstep")
+	_sfx_cache["coin"] = BGMLibrary.get_sfx("coin")
+	_sfx_cache["notify"] = BGMLibrary.get_sfx("notify")
+	_sfx_cache["error"] = BGMLibrary.get_sfx("error")
+	# BGM — 优先用文件，回退程序化
+	_bgm_cache["jincheng"] = BGMLibrary.get_stream("jincheng")
+	_bgm_cache["indoor"] = BGMLibrary.get_stream("indoor")
+	_bgm_cache["work"] = BGMLibrary.get_stream("work")
 
 
 ## 播放 BGM

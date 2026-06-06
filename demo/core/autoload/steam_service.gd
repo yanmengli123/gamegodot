@@ -107,6 +107,78 @@ func shutdown() -> void:
 	is_initialized = false
 
 
+# === Steam Workshop 集成 ===
+
+## 列出玩家已订阅的 Workshop 物品
+## 真实：Steam.ugcGetSubscribedItems()
+func get_subscribed_workshop_items() -> Array[Dictionary]:
+	if is_offline: return []
+	# 真实：Steam.getSubscribedItems() 返回 PublishedFileId_t 列表
+	# 然后 Steam.ugcQueryUGCDetails() 获取详情
+	return []
+
+
+## 玩家是否订阅了某物品
+func has_workshop_item(workshop_id: String) -> bool:
+	if is_offline: return false
+	# 真实：检查 get_subscribed_workshop_items() 里
+	return false
+
+
+## 打开 Workshop 浏览页
+func open_workshop_browser() -> void:
+	# 真实：Steam.activateGameOverlayToWebPage("steamcommunity.com/app/%d/workshop" % app_id)
+	print("Opening Steam Workshop browser (mock)")
+
+
+## 订阅 / 取消订阅
+func subscribe_to_item(workshop_id: String) -> bool:
+	# 真实：Steam.ugcSubscribeItem(workshop_id)
+	print("Subscribed to Workshop item: %s" % workshop_id)
+	return true
+
+func unsubscribe_from_item(workshop_id: String) -> bool:
+	# 真实：Steam.ugcUnsubscribeItem(workshop_id)
+	print("Unsubscribed: %s" % workshop_id)
+	return true
+
+
+## 下载 Workshop mod
+func download_workshop_item(workshop_id: String) -> bool:
+	# 真实：Steam.ugcDownloadItem(workshop_id)
+	# 完成后用 Steam.ugcGetItemDownloadInfo() 查询进度
+	print("Downloading Workshop item: %s" % workshop_id)
+	return true
+
+
+## 上传玩家的 mod
+func upload_workshop_item(title: String, description: String, file_path: String) -> bool:
+	# 真实：Steam.ugcCreateItem() 然后 ugcSubmitItemUpdate()
+	print("Uploaded: %s (%s)" % [title, file_path])
+	return true
+
+
+# === Steam P2P / Lobbies（多人游戏）===
+
+## 创建 Steam 大厅
+func create_lobby(lobby_type: int = 0, max_members: int = 4) -> String:
+	# 真实：Steam.lobbyCreated.connect(...) + Steam.createLobby(lobby_type, max_members)
+	# 返回 lobby_id
+	print("Created Steam lobby (mock)")
+	return "MOCK_LOBBY_12345"
+
+## 加入大厅
+func join_lobby(lobby_id: String) -> bool:
+	# 真实：Steam.joinLobby(lobby_id)
+	print("Joined Steam lobby: %s" % lobby_id)
+	return true
+
+## 离开大厅
+func leave_lobby(lobby_id: String) -> void:
+	# 真实：Steam.leaveLobby(lobby_id)
+	print("Left Steam lobby: %s" % lobby_id)
+
+
 ## 12 结局对应成就 ID
 const ENDING_ACHIEVEMENTS: Dictionary = {
 	"ending_boss": "ACH_BECAME_BOSS",
