@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="NPCData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/npc_data.gd" id="1_npcdata"]
+
+[resource]
+script = ExtResource("1_npcdata")
+npc_id = &"npc_wang_ayi"
+display_name = "王阿姨"
+age = 50
+gender = "女"
+occupation = "早餐摊老板"
+personality_tags = PackedStringArray("友善", "爱唠叨", "热心")
+sprite_seed = Color(0.95, 0.78, 0.65, 1)
+default_dialogue_id = &"dlg_wang_first"
+affinity_dialogues = {
+30: &"dlg_wang_friendly",
+60: &"dlg_wang_close"
+}
+possible_scenes = PackedStringArray("train_station", "old_town_market")
+schedules = Array[Resource]([])

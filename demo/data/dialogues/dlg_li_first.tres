@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_li_first"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "你是？工地的？找工作的？",
+"choices": [
+{"text": "是王阿姨介绍我来的", "next_node": "intro_wang", "condition": "flag:intro_li_ge"},
+{"text": "是的，我想找活干", "next_node": "ask_work"}
+]
+}, {
+"node_id": "intro_wang",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "哦，王姐介绍的？那就是自己人。你能干啥？",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_li_ge", "delta": 5}
+]
+}, {
+"node_id": "ask_work",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "你谁介绍来的？没有介绍人我们不收。",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_li_ge", "delta": -3}
+]
+}, {
+"node_id": "thank_you",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "行，明天早上 7 点来报到，记得带身份证。",
+"effects": [
+{"type": "set_flag", "flag_id": "met_li_ge", "value": true},
+{"type": "unlock_event", "event_id": "ev_first_work_construction"},
+{"type": "modify_stat", "stat": "mood", "delta": 10}
+]
+}]
+auto_close_on_end = true

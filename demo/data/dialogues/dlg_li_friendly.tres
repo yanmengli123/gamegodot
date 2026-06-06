@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_li_friendly"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "{player_name}，来了。今天给你加个活：搬钢筋上三楼。日薪 150。干不干？",
+"choices": [
+{"text": "干", "next_node": "ok", "effect": "stamina -= 5"},
+{"text": "我体力不够", "next_node": "no", "condition": "stamina < 30"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "好样的。明天下班来找我结钱。",
+"effects": [
+{"type": "set_flag", "flag_id": "today_work_assigned", "value": true},
+{"type": "modify_stat", "stat": "strength", "delta": 1}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "行，今天就在一楼帮忙分类材料吧。轻松点。",
+"effects": [
+{"type": "set_flag", "flag_id": "today_work_assigned", "value": true}
+]
+}]
+auto_close_on_end = true

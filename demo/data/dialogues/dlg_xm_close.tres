@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_xm_close"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "{player_name}！我……我有件事想跟你说。",
+"next_node": "news",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_xiao_mei", "delta": 5}
+]
+}, {
+"node_id": "news",
+"speaker": "npc_xiao_mei",
+"portrait": "normal",
+"text": "我……想辞职了。这个收银员的工作，每天重复一样的事，我感觉看不到未来。",
+"choices": [
+{"text": "想做什么？", "next_node": "dream"},
+{"text": "别冲动", "next_node": "stay"}
+]
+}, {
+"node_id": "dream",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "我想开个奶茶店。我研究了好几个月，配方都调好了。就是……本金不够。",
+"choices": [
+{"text": "我可以帮你", "next_node": "help", "condition": "cash >= 5000", "effect": "cash -= 5000"},
+{"text": "我们一起攒", "next_node": "together"}
+]
+}, {
+"node_id": "help",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "真的吗？你……你对我真好。等我赚回来，一定还你。",
+"effects": [
+{"type": "modify_money", "delta": -5000},
+{"type": "set_flag", "flag_id": "xm_milk_tea_funded", "value": true},
+{"type": "unlock_event", "event_id": "ev_milk_tea_opening"},
+{"type": "modify_stat", "stat": "mood", "delta": 20}
+]
+}, {
+"node_id": "together",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "嗯……一起努力吧。",
+"effects": [
+{"type": "set_flag", "flag_id": "xm_saving_together", "value": true}
+]
+}, {
+"node_id": "stay",
+"speaker": "npc_xiao_mei",
+"portrait": "sad",
+"text": "嗯……你说得对。我再想想。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -5}
+]
+}]
+auto_close_on_end = true

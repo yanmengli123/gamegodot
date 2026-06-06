@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_wang_close"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "{player_name}！来来来，我跟你说个事……",
+"next_node": "news",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_wang_ayi", "delta": 3}
+]
+}, {
+"node_id": "news",
+"speaker": "npc_wang_ayi",
+"portrait": "normal",
+"text": "我老伴的侄子李哥，在工地上管事，最近正好缺人手。要是你愿意吃苦，我跟他打声招呼。",
+"choices": [
+{"text": "太好了，麻烦阿姨引荐", "next_node": "ok", "effect": "cash += 0"},
+{"text": "我再想想", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "行，明天去工业区的建筑工地找他，跟他说王阿姨介绍来的就行。",
+"effects": [
+{"type": "set_flag", "flag_id": "intro_li_ge", "value": true},
+{"type": "unlock_event", "event_id": "ev_meet_li_ge"},
+{"type": "modify_stat", "stat": "mood", "delta": 15}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_wang_ayi",
+"portrait": "normal",
+"text": "也行，不急。等你什么时候想找工作了再跟我说。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -2}
+]
+}]
+auto_close_on_end = true

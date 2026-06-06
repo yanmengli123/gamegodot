@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_wang_friendly"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "又来啦？今天看着气色好点了，昨晚睡得不错吧？",
+"choices": [
+{"text": "阿姨，多亏你之前指点", "next_node": "thanks"},
+{"text": "今天有什么推荐？", "next_node": "menu"}
+],
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_wang_ayi", "delta": 2}
+]
+}, {
+"node_id": "thanks",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "哎，说什么呢。出门在外，互相帮衬嘛。今天请你喝碗粥，不要钱。",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_wang_ayi", "delta": 5},
+{"type": "modify_stat", "stat": "hunger", "delta": 25},
+{"type": "modify_stat", "stat": "mood", "delta": 10}
+]
+}, {
+"node_id": "menu",
+"speaker": "npc_wang_ayi",
+"portrait": "normal",
+"text": "今天豆浆、油条、还有新出的小米粥。你想吃啥？",
+"choices": [
+{"text": "老样子，豆浆", "next_node": "buy_soy", "effect": "cash -= 2"},
+{"text": "小米粥", "next_node": "buy_congee", "effect": "cash -= 5"}
+]
+}, {
+"node_id": "buy_soy",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "好嘞。",
+"effects": [
+{"type": "modify_money", "delta": -2},
+{"type": "modify_stat", "stat": "hunger", "delta": 20}
+]
+}, {
+"node_id": "buy_congee",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "这小米粥养胃，趁热。",
+"effects": [
+{"type": "modify_money", "delta": -5},
+{"type": "modify_stat", "stat": "hunger", "delta": 40},
+{"type": "modify_stat", "stat": "health", "delta": 5}
+]
+}]
+auto_close_on_end = true

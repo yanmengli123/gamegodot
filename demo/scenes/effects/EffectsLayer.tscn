@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/effects/effects_layer.gd" id="1_eff"]
+[ext_resource type="PackedScene" path="res://scenes/effects/PixelRain.tscn" id="2_rain"]
+
+[node name="EffectsLayer" type="Node2D"]
+script = ExtResource("1_eff")
+
+[node name="PixelRain" parent="." instance=ExtResource("2_rain")]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0, 0, 0, 0.65)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 320.0
+offset_bottom = 18.0
+theme_override_constants/separation = 8
+
+[node name="DateLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_font_sizes/font_size = 9
+text = "2025年3月1日"
+
+[node name="TimeLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "08:00"
+
+[node name="WeatherLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "[晴]"
+
+[node name="TopRight" type="VBoxContainer" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 30.0
+theme_override_constants/separation = 2
+
+[node name="CashLabel" type="Label" parent="HUD/TopRight"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0.95, 0.5, 1)
+theme_override_font_sizes/font_size = 10
+text = "¥500"
+horizontal_alignment = 2
+
+[node name="StatusContainer" type="HBoxContainer" parent="HUD/TopRight"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 2
+
+[node name="BottomBars" type="VBoxContainer" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -90.0
+offset_right = 130.0
+offset_bottom = -4.0
+theme_override_constants/separation = 2
+
+[node name="StaminaBar" type="ProgressBar" parent="HUD/BottomBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HungerBar" type="ProgressBar" parent="HUD/BottomBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 100.0
+value = 80.0
+show_percentage = false
+
+[node name="MoodBar" type="ProgressBar" parent="HUD/BottomBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 100.0
+value = 70.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/BottomBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HygieneBar" type="ProgressBar" parent="HUD/BottomBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false

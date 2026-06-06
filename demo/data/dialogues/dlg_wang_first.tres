@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_wang_first"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "哎哟，小伙子，第一次来吧？要吃点什么？豆浆 2 块，油条 1 块。",
+"choices": [
+{"text": "来碗豆浆", "next_node": "buy", "effect": "cash -= 2"},
+{"text": "不要，我没钱", "next_node": "refuse", "condition": "cash < 2"}
+],
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_wang_ayi", "delta": 1},
+{"type": "set_flag", "flag_id": "met_wang_ayi", "value": true}
+]
+}, {
+"node_id": "buy",
+"speaker": "npc_wang_ayi",
+"portrait": "happy",
+"text": "好嘞，趁热喝！一个人来城里闯荡不容易，慢慢来。",
+"effects": [
+{"type": "modify_money", "delta": -2},
+{"type": "modify_stat", "stat": "hunger", "delta": 20},
+{"type": "modify_stat", "stat": "mood", "delta": 5},
+{"type": "give_item", "item_id": "food_doujiang", "quantity": 1}
+]
+}, {
+"node_id": "refuse",
+"speaker": "npc_wang_ayi",
+"portrait": "sad",
+"text": "哎，没钱啊……那你先到处看看吧，这城里活路多，肯干就不会饿死。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

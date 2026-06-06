@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_li_close"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "{player_name}，来，坐。我跟你说个事。",
+"next_node": "news",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_li_ge", "delta": 3}
+]
+}, {
+"node_id": "news",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "我观察你一阵了，能吃苦，人也老实。最近我们接了个大项目——商业中心那栋写字楼。",
+"choices": [
+{"text": "我能参与吗？", "next_node": "join"}
+]
+}, {
+"node_id": "join",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "想不想学点技术？我让我徒弟教你开塔吊。学会了工资翻倍。",
+"choices": [
+{"text": "愿意", "next_node": "accept", "effect": "strength -= 0"},
+{"text": "再想想", "next_node": "decline"}
+]
+}, {
+"node_id": "accept",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "行，下周一开始。好好干。",
+"effects": [
+{"type": "set_flag", "flag_id": "learned_tower_crane", "value": true},
+{"type": "set_flag", "flag_id": "promoted_constructor", "value": true},
+{"type": "unlock_event", "event_id": "ev_tower_crane_training"},
+{"type": "modify_stat", "stat": "strength", "delta": 5}
+]
+}, {
+"node_id": "decline",
+"speaker": "npc_li_ge",
+"portrait": "normal",
+"text": "也行。等你想学了随时找我。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true
