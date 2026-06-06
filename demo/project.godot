@@ -36,6 +36,8 @@ Audio="*res://core/autoload/audio_manager.gd"
 TileMapInit="*res://core/autoload/tilemap_autoload.gd"
 Story="*res://core/autoload/main_story.gd"
 Endings="*res://core/autoload/ending_system.gd"
+Locale="*res://core/autoload/locale_service.gd"
+Steam="*res://core/autoload/steam_service.gd"
 
 [display]
 

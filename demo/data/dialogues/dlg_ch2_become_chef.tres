@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_become_chef"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_chef",
+"portrait": "normal",
+"text": "「你在厨房帮工？\n想不想学做菜？\n我收你当学徒，月薪 3000。」",
+"choices": [
+{"text": "想学！", "next_node": "yes"},
+{"text": "以后再说", "next_node": "no"}
+]
+}, {
+"node_id": "yes",
+"speaker": "npc_chef",
+"portrait": "happy",
+"text": "好！明天开始跟我学切菜。\n3 个月后，你就是真正的厨师了。",
+"effects": [
+{"type": "set_flag", "flag_id": "became_chef", "value": true},
+{"type": "modify_stat", "stat": "craft", "delta": 5},
+{"type": "modify_money", "delta": 3000}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_chef",
+"portrait": "normal",
+"text": "行，想好了来找我。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

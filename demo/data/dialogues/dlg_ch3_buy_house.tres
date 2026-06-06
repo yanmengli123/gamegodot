@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_buy_house"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_realtor",
+"portrait": "happy",
+"text": "「先生，恭喜您。\n这套 50 平的小户型，\n总价 80 万，\n首付 24 万，按揭 30 年。」",
+"choices": [
+{"text": "买！", "next_node": "yes", "condition": "cash >= 240000", "effect": "cash -= 240000"},
+{"text": "太贵了", "next_node": "no"}
+]
+}, {
+"node_id": "yes",
+"speaker": "npc_realtor",
+"portrait": "happy",
+"text": "成交！\n这是钥匙，\n欢迎入住锦城家园。",
+"effects": [
+{"type": "set_flag", "flag_id": "bought_house", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 30}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_realtor",
+"portrait": "normal",
+"text": "好，再看看别的。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -5}
+]
+}]
+auto_close_on_end = true

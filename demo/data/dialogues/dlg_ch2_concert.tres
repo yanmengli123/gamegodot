@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_concert"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你路过一个 live house，\n门口有歌手在唱《海阔天空》。\n你停下来听了一会儿。\n不知不觉，眼眶湿润。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": 15},
+{"type": "set_flag", "flag_id": "heard_song", "value": true}
+]
+}]
+auto_close_on_end = true

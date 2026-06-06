@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_prologue_atm"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你走到一个 ATM 前。\n\n（你还没有银行卡，按 E 跳过）",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "提示：银行卡要去银行柜台办。"
+}]
+auto_close_on_end = true

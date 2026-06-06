@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_promotion"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_factory_boss",
+"portrait": "happy",
+"text": "「{player_name}，你这一年干得不错，\n我提拔你做车间主任。\n月薪 8000。」",
+"effects": [
+{"type": "set_flag", "flag_id": "promoted_to_lead", "value": true},
+{"type": "modify_money", "delta": 8000},
+{"type": "modify_stat", "stat": "mood", "delta": 25}
+]
+}]
+auto_close_on_end = true

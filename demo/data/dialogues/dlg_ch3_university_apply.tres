@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_university_apply"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_admissions",
+"portrait": "normal",
+"text": "「同学，你想报我们学校的计算机专业？\n需要：\n- 高中或同等学力\n- 笔试（数学 + 语文）\n- 面试\n- ¥20000 学费 / 年」",
+"choices": [
+{"text": "报名", "next_node": "yes", "condition": "cash >= 20000", "effect": "cash -= 20000"},
+{"text": "再考虑", "next_node": "no"}
+]
+}, {
+"node_id": "yes",
+"speaker": "npc_admissions",
+"portrait": "happy",
+"text": "恭喜你，{player_name}。\n9 月 1 日开学。\n带上录取通知书和身份证。",
+"effects": [
+{"type": "set_flag", "flag_id": "enrolled_university", "value": true},
+{"type": "modify_stat", "stat": "intelligence", "delta": 3},
+{"type": "modify_stat", "stat": "mood", "delta": 20}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_admissions",
+"portrait": "normal",
+"text": "好，想好了再来。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

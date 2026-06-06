@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_pay_rent"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_landlord",
+"portrait": "normal",
+"text": "小伙子，今天是 7 号，该交租了。\n合租房 800 一个月，提前交。",
+"choices": [
+{"text": "好", "next_node": "ok", "condition": "cash >= 800", "effect": "cash -= 800"},
+{"text": "能不能晚几天", "next_node": "later"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_landlord",
+"portrait": "happy",
+"text": "行，这是收据。",
+"effects": [
+{"type": "set_flag", "flag_id": "rent_paid", "value": true}
+]
+}, {
+"node_id": "later",
+"speaker": "npc_landlord",
+"portrait": "angry",
+"text": "晚几天？再晚你睡大街去！",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -10}
+]
+}]
+auto_close_on_end = true

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_met_xiaomei"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_xiao_mei",
+"portrait": "normal",
+"text": "「你是新来的？\n我也刚来 2 个月。\n要不……加个微信？」",
+"choices": [
+{"text": "好", "next_node": "ok"},
+{"text": "算了", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "太好了！\n以后可以一起上下班～",
+"effects": [
+{"type": "modify_affinity", "npc_id": "npc_xiao_mei", "delta": 10},
+{"type": "set_flag", "flag_id": "met_xiaomei", "value": true}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_xiao_mei",
+"portrait": "sad",
+"text": "哦……好的。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

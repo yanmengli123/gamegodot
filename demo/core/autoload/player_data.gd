@@ -461,7 +461,10 @@ func from_dict(d: Dictionary) -> void:
 	current_accommodation = d.get("current_accommodation", "homeless")
 	accommodation_days_unpaid = d.get("accommodation_days_unpaid", 0)
 	status_effects = d.get("status_effects", {})
-	inventory_slots = d.get("inventory_slots", [])
+	var inv: Array = d.get("inventory_slots", [])
+	inventory_slots = []
+	for s in inv:
+		inventory_slots.append(s)
 	inventory_capacity = d.get("inventory_capacity", INVENTORY_BASE_SIZE)
 	current_job = d.get("current_job", "")
 	current_job_days_worked = d.get("current_job_days_worked", 0)

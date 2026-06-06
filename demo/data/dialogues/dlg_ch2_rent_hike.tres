@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_rent_hike"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_landlord",
+"portrait": "angry",
+"text": "「小伙子，告诉你个事，\n下个月起房租涨 200。\n锦城房价在涨。」",
+"choices": [
+{"text": "接受", "next_node": "accept"},
+{"text": "我要搬家", "next_node": "move"}
+]
+}, {
+"node_id": "accept",
+"speaker": "npc_landlord",
+"portrait": "normal",
+"text": "行，签新合同。",
+"effects": [
+{"type": "set_flag", "flag_id": "rent_hike_accepted", "value": true}
+]
+}, {
+"node_id": "move",
+"speaker": "npc_landlord",
+"portrait": "angry",
+"text": "走啊！这房子多少人抢着要！",
+"effects": [
+{"type": "set_flag", "flag_id": "moving_out", "value": true}
+]
+}]
+auto_close_on_end = true

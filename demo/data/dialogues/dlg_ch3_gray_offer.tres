@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_gray_offer"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_gray_brother",
+"portrait": "normal",
+"text": "「兄弟，看你机灵。\n有个事：\n帮我送一批货去城东，\n跑一趟给 1000。」",
+"choices": [
+{"text": "干了", "next_node": "ok", "effect": "cash += 1000"},
+{"text": "我不干", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_gray_brother",
+"portrait": "happy",
+"text": "聪明。明天晚上 10 点，老地方见。",
+"effects": [
+{"type": "set_flag", "flag_id": "gray_route_started", "value": true},
+{"type": "modify_stat", "stat": "criminal_record", "delta": 15}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_gray_brother",
+"portrait": "angry",
+"text": "切，不识抬举。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

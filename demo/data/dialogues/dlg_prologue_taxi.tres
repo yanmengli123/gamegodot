@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_prologue_taxi"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_taxi_driver",
+"portrait": "normal",
+"text": "小伙子，去哪儿？\n我这是出租车，起步价 10 块。",
+"choices": [
+{"text": "我去老街", "next_node": "old_town", "effect": "cash -= 10"},
+{"text": "我走路", "next_node": "walk"}
+]
+}, {
+"node_id": "old_town",
+"speaker": "npc_taxi_driver",
+"portrait": "happy",
+"text": "上车吧，10 块。\n（你坐在出租车后座，看着窗外的霓虹灯从眼前掠过）",
+"effects": [
+{"type": "modify_money", "delta": -10},
+{"type": "modify_stat", "stat": "mood", "delta": 5}
+]
+}, {
+"node_id": "walk",
+"speaker": "npc_taxi_driver",
+"portrait": "normal",
+"text": "行，路上小心。",
+"effects": [
+{"type": "modify_stat", "stat": "stamina", "delta": -5}
+]
+}]
+auto_close_on_end = true

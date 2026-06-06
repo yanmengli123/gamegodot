@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_hospital"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "第 6 天，你发烧了。\n\n你打车去了医院。",
+"next_node": "doctor",
+"effects": [
+{"type": "set_flag", "flag_id": "went_hospital", "value": true},
+{"type": "modify_money", "delta": -200}
+]
+}, {
+"node_id": "doctor",
+"speaker": "npc_doctor",
+"portrait": "normal",
+"text": "你这是感冒引起的高烧。\n需要输液 3 天，加开药。\n总共 ¥300。",
+"effects": [
+{"type": "modify_money", "delta": -300},
+{"type": "modify_stat", "stat": "health", "delta": 20}
+]
+}, {
+"node_id": "tip",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "提示：游戏里医院不便宜。\n要保重身体啊，{player_name}。",
+"next_node": "end"
+}, {
+"node_id": "end",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "（你拎着药回到出租屋，\n吃了药，沉沉睡去。）"
+}]
+auto_close_on_end = true

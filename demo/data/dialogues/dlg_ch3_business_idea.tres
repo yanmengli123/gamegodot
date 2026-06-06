@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_business_idea"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "「{player_name}，\n我想了想你的提议，\n要不我们一起开奶茶店？\n我出技术，你出资 5 万。」",
+"choices": [
+{"text": "成交！", "next_node": "ok", "effect": "cash -= 50000"},
+{"text": "我考虑一下", "next_node": "no"}
+]
+}, {
+"node_id": "ok",
+"speaker": "npc_xiao_mei",
+"portrait": "happy",
+"text": "太好了！\n选址我来，你负责装修。\n3 个月后开业！",
+"effects": [
+{"type": "set_flag", "flag_id": "xm_milk_tea_funded", "value": true},
+{"type": "set_flag", "flag_id": "pro_route_completed", "value": true}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_xiao_mei",
+"portrait": "sad",
+"text": "好吧，我再想想别的办法。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -5}
+]
+}]
+auto_close_on_end = true

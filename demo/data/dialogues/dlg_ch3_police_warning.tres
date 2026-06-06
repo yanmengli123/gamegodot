@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch3_police_warning"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_police",
+"portrait": "normal",
+"text": "「{player_name}？\n我们是派出所的。\n最近城东有一起案件，\n有人举报你曾经接触过相关人员。\n你有什么要说的吗？」",
+"choices": [
+{"text": "我什么都不知道", "next_node": "deny"},
+{"text": "我承认", "next_node": "admit"}
+]
+}, {
+"node_id": "deny",
+"speaker": "npc_police",
+"portrait": "normal",
+"text": "好，我们会继续调查。\n这段时间你老实点。",
+"effects": [
+{"type": "set_flag", "flag_id": "police_warned", "value": true}
+]
+}, {
+"node_id": "admit",
+"speaker": "npc_police",
+"portrait": "angry",
+"text": "坦白从宽。\n跟我们走一趟。",
+"effects": [
+{"type": "set_flag", "flag_id": "arrested", "value": true},
+{"type": "modify_stat", "stat": "criminal_record", "delta": 30}
+]
+}]
+auto_close_on_end = true

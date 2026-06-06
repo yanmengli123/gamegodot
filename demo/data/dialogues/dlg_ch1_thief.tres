@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_thief"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "晚上 9 点，你从网吧出来。\n走小巷时，一个人影从背后抢过你的手机就跑！",
+"choices": [
+{"text": "追！", "next_node": "chase", "effect": "stamina -= 30"},
+{"text": "算了", "next_node": "give_up"}
+]
+}, {
+"node_id": "chase",
+"speaker": "narrator",
+"portrait": "normal",
+"text": "你拼了命追，跑了两条街，\n终于追上了！抢回手机！\n对方威胁你：\n「小子，记住你了！」",
+"effects": [
+{"type": "set_flag", "flag_id": "thief_caught", "value": true},
+{"type": "modify_stat", "stat": "stamina", "delta": -30},
+{"type": "modify_stat", "stat": "mood", "delta": 10}
+]
+}, {
+"node_id": "give_up",
+"speaker": "narrator",
+"portrait": "sad",
+"text": "你看着那人的背影消失在黑暗中。\n手机没了。",
+"effects": [
+{"type": "modify_money", "delta": -800},
+{"type": "set_flag", "flag_id": "phone_lost", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": -20}
+]
+}]
+auto_close_on_end = true

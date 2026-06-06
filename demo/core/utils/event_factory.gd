@@ -61,6 +61,9 @@ static func create_all() -> Array[EventData]:
 		_make(&"ev_police_misunderstand", "被误抓", EventData.Type.CRISIS, EventData.TriggerType.STAT_BASED,
 			{"criminal_record_min": 30}, "", 2, true, 90, "", {},
 			{"money": 500, "stat": {"reputation": -20, "mood": -30}}, 0),
+		# === 简化：用于测试 ===
+		_make(&"ev_test_money_min", "测试金钱条件", EventData.Type.RANDOM, EventData.TriggerType.TIME_BASED,
+			{"money_min": 200, "time": [0, 23]}, "", 1, true, 0, "", {"money": 1}, {}, 0),
 	]
 
 

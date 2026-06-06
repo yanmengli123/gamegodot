@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch1_boss_praise"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_li_ge",
+"portrait": "happy",
+"text": "「今天你干得不错！\n这个月给你加 20% 工资。\n好好干！」",
+"effects": [
+{"type": "modify_money", "delta": 200},
+{"type": "modify_stat", "stat": "mood", "delta": 20},
+{"type": "set_flag", "flag_id": "boss_praised", "value": true}
+]
+}]
+auto_close_on_end = true

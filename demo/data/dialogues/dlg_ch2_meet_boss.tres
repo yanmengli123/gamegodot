@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_meet_boss"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_factory_boss",
+"portrait": "normal",
+"text": "「你是李哥介绍来的？\n行，来我们厂吧。\n月薪 4500，8 小时工作制，\n五险一金。」",
+"choices": [
+{"text": "太好了！", "next_node": "yes"},
+{"text": "我考虑一下", "next_node": "no"}
+]
+}, {
+"node_id": "yes",
+"speaker": "npc_factory_boss",
+"portrait": "happy",
+"text": "好，下周一早上 8 点来报到。\n带上身份证、照片、银行卡。",
+"effects": [
+{"type": "modify_money", "delta": 4500},
+{"type": "set_flag", "flag_id": "has_stable_job", "value": true},
+{"type": "set_flag", "flag_id": "stable_income", "value": true},
+{"type": "modify_stat", "stat": "mood", "delta": 20}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_factory_boss",
+"portrait": "normal",
+"text": "行，机会不多。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": -3}
+]
+}]
+auto_close_on_end = true

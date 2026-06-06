@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/resources/dialogue_data.gd" id="1_dlg"]
+
+[resource]
+script = ExtResource("1_dlg")
+dialogue_id = &"dlg_ch2_old_classmate"
+first_node = "intro"
+nodes = [{
+"node_id": "intro",
+"speaker": "npc_classmate_2",
+"portrait": "happy",
+"text": "「你是{player_name}？\n天哪，老同学！\n你还记得我吗？」",
+"next_node": "rem",
+"effects": [
+{"type": "set_flag", "flag_id": "met_old_classmate", "value": true}
+]
+}, {
+"node_id": "rem",
+"speaker": "npc_classmate_2",
+"portrait": "happy",
+"text": "「我现在在城东开了家小公司，\n做电商。需要一个帮手。\n要不你来？」",
+"choices": [
+{"text": "想！", "next_node": "yes"},
+{"text": "我现在有工作了", "next_node": "no"}
+]
+}, {
+"node_id": "yes",
+"speaker": "npc_classmate_2",
+"portrait": "happy",
+"text": "好，下周一来！\n月薪 6000，做销售。\n我们是老同学，亏待不了你。",
+"effects": [
+{"type": "modify_money", "delta": 6000},
+{"type": "set_flag", "flag_id": "salesman_job", "value": true}
+]
+}, {
+"node_id": "no",
+"speaker": "npc_classmate_2",
+"portrait": "normal",
+"text": "也行，有需要随时找我。",
+"effects": [
+{"type": "modify_stat", "stat": "mood", "delta": 5}
+]
+}]
+auto_close_on_end = true
